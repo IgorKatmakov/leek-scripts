@@ -1,4 +1,4 @@
-/* -- main.jjs
+/* -- main.js
 
 Base script for Jozay OS - Leek IA
 */
@@ -10,9 +10,11 @@ include('Helpers/chips.js');
 include('Helpers/talk.js');
 
 // Constants
-var WEAPON = WEAPON_DOUBLE_GUN;
+var WEAPON = WEAPON_MAGNUM;
+var WEAPON_SECONDARY = WEAPON_DOUBLE_GUN;
 var HEAL_CHIP = CHIP_CURE;
 var SHIELD_CHIP = CHIP_SHIELD;
+var DAMAGE_CHIP = CHIP_SPARK;
 var HEAL_THRESHOLD = 75;
 
 // Leeks
@@ -43,9 +45,8 @@ if (not (atRange and minDamages >= enemyLife)) {
 }
 
 // Shoot with everything left
-WPN_alphaStrike(target, tp_cost);
-
-debug("TP left :" + getTP());
+WPN_alphaStrike(target);
+CHP_alphaStrike(target, DAMAGE_CHIP);
 
 // If any TP left, taunt enemy !
 TLK_tauntEnemy(target);

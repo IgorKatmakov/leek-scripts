@@ -49,9 +49,15 @@ Shoot with all TP left.
 Args :
     * target: enemy leek you want to transform into a punch card.
 */
-function WPN_alphaStrike(target, cost) {
-	for (var tp = getTP(); tp > cost; tp--) {
-		useWeapon(target);
+function WPN_alphaStrike(target) {
+
+	var lastShoot = "#USE_SUCCESS";
+	var goodShoots = ["#USE_SUCCESS", "#USE_CRITICAL"];
+
+	if (canUseWeapon(target)) {
+		while(inArray(goodShoots, lastShoot)) {
+			lastShoot = useWeapon(target);
+		}
 	}
 }
 
