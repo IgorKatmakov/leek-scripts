@@ -80,7 +80,7 @@ function WPN_selectWeapon(arrOrderWeapon,enemy){
 			}		
 			
 			arrSelectedWeapon = [currentWeapon,getWeaponCost(currentWeapon),tpUsed];
-			
+			 
 			return arrSelectedWeapon;
 		}
 		
