@@ -11,9 +11,14 @@ Args :
 */
 function WPN_pickWeapon(weapon) {
 
+    var didEquip = False;
+
     if( getWeapon() != weapon ) {
         setWeapon(weapon);
+        didEquip = True;
     }
+
+    return didEquip;
 }
 
 /*
