@@ -61,32 +61,31 @@ Args :
 Return :
 	* arr_selected_weapon : tab contains weapon selected, cost of the weapon and number of tp used
 */
-function my_select_weapon(arr_order_weapon,enemy)
-{
+function WPN_selectWeapon(arrOrderWeapon,enemy){
 	//Count the number of element
-	var nb_weapon = count(arr_order_weapon);
-	var arr_selected_weapon = [];
-	var tp_used = 0;
+	var nbWeapon = count(arrOrderWeapon);
+	var arrSelectedWeapon = [];
+	var tpUsed = 0;
 	
-	while(nb_weapon != 0)
-	{
-		var current_weapon = arr_order_weapon[0];
-
-		if(canUseWeapon(current_weapon,enemy) == true)
-		{
-
-			if(getWeapon() != current_weapon) // 1 TP
-			{
-				setWeapon(current_weapon);
-				tp_used = 1;
+	
+	while(nbWeapon != 0){
+		var currentWeapon = arrOrderWeapon[0];
+		
+		//If we can use the current weapon
+		if(canUseWeapon(currentWeapon,enemy) == true){
+			//if you don't have it already
+			if(getWeapon() != currentWeapon){// 1 TP
+				setWeapon(currentWeapon);
+				tpUsed = 1;
 			}		
 			
-			arr_selected_weapon = [current_weapon,getWeaponCost(current_weapon),tp_used];
+			arrSelectedWeapon = [currentWeapon,getWeaponCost(currentWeapon),tpUsed];
 			
-			return arr_selected_weapon;
+			return arrSelectedWeapon;
 		}
 		
-		nb_weapon --;
+		nbWeapon --;
 	}
-	return arr_selected_weapon;
+	
+	return arrSelectedWeapon;
 }
